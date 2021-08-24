@@ -1,0 +1,269 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title" : "API desafio backend",
+    "description": "Essa API tem como objetivo cadastrar usuários e hobbies",
+    "termsOfService": "http://localhost:3333/terms",
+    "contact": {
+      "email": "bruno.almeidah@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333",
+      "description": "API de test"
+    }
+  ],
+  "paths": {
+    "/users" : {
+      "post": {
+        "summary": "Cadastro de usuário",
+        "description": "",
+        "tags": ["Users"],
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "user": {
+                  "value": {
+                    "name" : "Bruno"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description" : "OK"
+          }
+        }
+      },
+      "get": {
+        "summary": "Listagem de usuários",
+        "description": "",
+        "tags": ["Users"],
+        "responses": {
+          "200": {
+            "description" : "OK"
+            
+          }
+        }
+      }
+    },
+    "/users/{id}" : {
+      "put": {
+        "summary": "Atualização de usuário",
+        "description": "",
+        "tags": ["Users"],
+        "parameters":[
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              },
+              "examples": {
+                "user": {
+                  "value": {
+                    "name" : "Bruno"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description" : "OK"
+           
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca de usuário por id",
+        "description": "",
+        "tags": ["Users"],
+        "parameters":[
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description" : "OK"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Exclusão de usuário",
+        "description": "",
+        "tags": ["Users"],
+        "parameters":[
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/hobbies" : {
+      "post": {
+        "summary": "Cadastro de Hobbie",
+        "description": "",
+        "tags": ["Hobbies"],
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema": {
+                "$ref": "#/components/schemas/Hobbie"
+              },
+              "examples": {
+                "hobbie": {
+                  "value": {
+                    "name": "Correr",
+                    "experienceLevel" : "Alta",
+                    "year": 2021,
+                    "userId": "6122ef2b66a47b0700ab6f6c"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description" : "OK"
+          }
+        }
+      }
+    },
+    "/hobbies/{id}" : {
+      "put": {
+        "summary": "Atualização de hobbie",
+        "description": "",
+        "tags": ["Hobbies"],
+        "parameters":[
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do hobbie",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content":{
+            "application/json":{
+              "schema": {
+                "$ref": "#/components/schemas/Hobbie"
+              },
+              "examples": {
+                "hobbie": {
+                  "value": {
+                    "name": "Correr",
+                    "experienceLevel" : "Alta",
+                    "year": 2021
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description" : "OK"
+           
+          }
+        }
+      },
+      "get": {
+        "summary": "Busca de hobbie por id",
+        "description": "",
+        "tags": ["Hobbies"],
+        "parameters":[
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do hobbie",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description" : "OK"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Exclusão de hobbie",
+        "description": "",
+        "tags": ["Hobbies"],
+        "parameters":[
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do hobbie",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description" : "OK"
+          }
+        }
+      }
+    }
+    
+  },
+  "components": {
+    "schemas": {
+      "User":  {
+        "type" : "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Hobbie":  {
+        "type" : "object",
+        "properties": {
+          "experienceLevel": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number"
+          },
+          "userId": {
+            "type": "string"
+          }
+        }
+      }
+      
+    }
+  }
+}
